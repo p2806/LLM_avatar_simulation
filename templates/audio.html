@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon-32x32.png" type="image/png">
+
+    <title>Video Recorder and Audio Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-section, .audio-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        video {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button, a {
+            margin: 10px 0;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Video Section on the Left -->
+        <div class="video-section">
+            <h2>Record a Video</h2>
+            <video id="videoPreview" autoplay muted></video><br>
+            <button id="startBtn">Start Recording</button>
+            <button id="stopBtn" disabled>Stop Recording</button>
+            <a id="downloadLink" style="display:none">Download Video</a>
+        </div>
+
+        <!-- Audio Section on the Right -->
+        <div class="audio-section">
+            <h2>Audio Player</h2>
+            <audio id="audio" controls>
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        // Set up video recording
+        const videoPreview = document.getElementById('videoPreview');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const downloadLink = document.getElementById('downloadLink');
+		const audio = document.getElementById('audio');
+
+        // Access the user's webcam and microphone
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(stream => {
+            
+            window.stream= stream;
+            if(videoPreview.srcObject === null){
+                       videoPreview.srcObject = window.stream;
+                  };
+
+            mediaRecorder = new MediaRecorder(window.stream);
+
+            mediaRecorder.ondataavailable = event => {
+                if (event.data.size > 0) {
+                    recordedChunks.push(event.data);
+                }
+            };
+
+            mediaRecorder.onstop = () => {
+                const videoBlob = new Blob(recordedChunks, {type: 'video/webm'});
+                const videoURL = URL.createObjectURL(videoBlob);
+                videoPreview.srcObject = null;
+                saveVideo(videoBlob);
+                videoPreview.srcObject= window.stream;
+                recordedChunks = [];
+            };
+        });
+
+        // Start recording
+        startBtn.addEventListener('click', () => {
+            mediaRecorder.start();
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+        });
+
+        // Stop recording
+        stopBtn.addEventListener('click', () => {
+            mediaRecorder.stop();
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        });
+		async function saveVideo(videoBlob) {
+            const formData = new FormData();
+            formData.append('video', videoBlob, 'video.webm');
+    
+            try {
+                await fetch('http://127.0.0.1:5000/save-video',{
+                        method: 'POST',
+                        body: formData
+                    }).then(response => response.blob())
+				.then(blob => {
+                        const audioUrl = URL.createObjectURL(blob);
+                        const audioElement = document.getElementById('audio');
+                        audioElement.src = audioUrl;
+                        audioElement.play();
+                    })
+				.catch(error => {
+                        console.error('Error fetching audio:', error);
+                        alert('An error occurred while fetching the audio file.');
+                    });
+                // Fetch the audio after saving the video
+                // await fetchAudio();
+            } catch (err) {
+                console.error('Error saving video:', err);
+            }
+        };
+    </script>
+</body>
+</html>

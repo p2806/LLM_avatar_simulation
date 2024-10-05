@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon-32x32.png" type="image/png">
+    <title>Proactive - AI Conversational Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .hero {
+            background: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .cta-button {
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .features, .about, .testimonials {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .features h2, .about h2, .testimonials h2 {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        .feature, .testimonial {
+            margin: 20px 0;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#">Proactive</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </header>
+    <div class="hero">
+        <h1>Welcome to PROaCTIVE</h1>
+        <p>Experience the future of AI conversations.</p>
+        <a href="{{ url_for('video') }}" class="cta-button">Let's Practice</a>
+    </div>
+    <div id="features" class="features">
+        <h2>Features</h2>
+        <div class="feature">
+            <h3>Interactive Chat</h3>
+            <p>Engage in dynamic conversations with our advanced AI.</p>
+        </div>
+        <div class="feature">
+            <h3>Real-Time Responses</h3>
+            <p>Get instant replies and solutions tailored to your needs.</p>
+        </div>
+        <div class="feature">
+            <h3>Customizable Experience</h3>
+            <p>Personalize the AI interactions to suit your preferences.</p>
+        </div>
+    </div>
+    <div id="about" class="about">
+        <h2>About Us</h2>
+        <p>Proactive is designed to revolutionize how you interact with AI, providing a seamless and intuitive conversational experience.</p>
+    </div>
+    <div id="testimonials" class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial">
+            <p>"Proactive has changed the way I interact with technology. The AI is incredibly intuitive and helpful!"</p>
+            <cite>- Alex Smith</cite>
+        </div>
+        <div class="testimonial">
+            <p>"An amazing tool for anyone looking to streamline their conversations and tasks. Highly recommend!"</p>
+            <cite>- Jamie Lee</cite>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Proactive. All rights reserved.</p>
+        <a href="#contact">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+    </footer>
+</body>
+</html>
