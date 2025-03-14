@@ -1,0 +1,27 @@
+The GOAL of Simulation is to support you in developing practice with saying no in environments where you might feel a power differential where your power is HIGH: Effective communication and empathy are key when navigating these situations. It's important to provide clear explanations, involve patients in the decision-making process, and offer alternatives when appropriate. If you're unsure about how to handle a particular situation, consult with colleagues or mentors to ensure you make the best decisions for your patient's well-being. Here we will give you cards to prompt a conversation after a minute of discussion we will provide you a card you can read that may summarize what you said but may also bring up a few new ideas.
+Prescription Medications: · "Can you please explain your reasons for requesting this specific medication?" · "Are you aware of the potential risks associated with this medication?" · "Would you be open to discussing alternative treatment options that may be more suitable?"
+Opioid Pain Medications: · "On a scale of 1 to 10, can you describe the intensity of your pain?" · "Have you tried non-opioid pain relief methods before?" · "Would you be willing to explore other pain management options in addition to opioids?"
+Unnecessary Tests or Procedures: · "What are your concerns or reasons for requesting this test or procedure?" · "Are you familiar with the potential risks and benefits of this test/procedure?" · "Would you like me to provide information on evidence-based recommendations for your condition?"
+Antibiotics for Viral Infections: · "Are you aware of the differences between viral and bacterial infections?" · "Would you like me to explain why antibiotics are not effective for viral infections?" · "Can I provide you with recommendations for managing your symptoms while your body fights off the virus naturally?"
+Early Refill of Controlled Substances: · "Could you please share more about your current situation or why you're requesting an early refill?" · "Have you experienced any changes in your condition that necessitate this request?" · "Would you be open to discussing your treatment plan with a specialist to ensure it's meeting your needs?"
+Off-Label Use of Medications: · "I understand your interest in this medication. Have you discussed this with your healthcare provider before?" · "Are you aware that using medications off-label means they haven't been thoroughly tested for this specific purpose?" · "Would you like to explore alternative treatment options that are FDA-approved for your condition?"
+
+Things to be considered
+Saying "no" can be challenging, especially when dealing with patients' requests. Here are some difficult things to say no to when a patient asks, along with suggestions for handling these situations:
+Prescription Medications: When a patient requests a specific medication that might not be appropriate for their condition or could have potential risks, it's essential to explain the reasoning behind your decision and offer alternative options.
+Opioid Pain Medications: If a patient asks for opioids for pain relief, it's crucial to assess their pain level and consider alternative pain management strategies, such as non-opioid medications, physical therapy, or other interventions.
+Unnecessary Tests or Procedures: Patients might request unnecessary tests or procedures due to anxiety or misinformation. It's important to explain the potential risks, benefits, and alternatives, focusing on evidence-based medical decisions.
+Antibiotics for Viral Infections: Patients often request antibiotics for viral infections, believing they will help. Educate them about the difference between viral and bacterial infections, and why antibiotics are not effective against viruses.
+Early Refill of Controlled Substances: If a patient requests an early refill of a controlled substance, it's essential to assess whether this request is due to a legitimate medical need or potential misuse. Open communication and understanding can help navigate this situation.
+Off-Label Use of Medications: Patients might ask for medications to be prescribed for uses not approved by regulatory authorities. It's important to explain the lack of evidence for such uses and potential risks.
+
+Rate Metrics for success – Here are some thoughts – users could choose the activity, and the associated rate would then apply.
+Speaking rate (wpm) = total words / number of minutes - Average speech rates
+Presentations: between 100-150 wpm for a comfortable pace
+Conversational: between 120-150 wpm
+Audiobooks: between 150-160 wpm, which is the upper range that people comfortably hear and vocalize words
+Radio hosts and podcasters: between 150-160 wpm
+Auctioneers: can speak at about 250 wpm
+Commentators: between 250-400 wpm
+
+Remember that effective communication and empathy are key when navigating these situations. It is important to provide clear explanations, involve patients in the decision-making process, and offer alternatives when appropriate. If you are unsure about how to handle a particular situation, consult with colleagues or mentors to ensure you make the best decisions for your patients' well-being.
