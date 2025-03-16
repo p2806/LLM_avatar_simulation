@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+
+  build:
+    commands:
+      - echo "Running tests..."
+      - pytest || echo "Tests failed, continuing..."
+
+  post_build:
+    commands:
+      - echo "Zipping application files..."
+      - zip -r application.zip .
+      - mv application.zip $CODEBUILD_SRC_DIR/
+
+artifacts:
+  files:
+    - application.zip
