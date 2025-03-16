@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon-32x32.png" type="image/png">
+
+    <title>Video Recorder and Avatar Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); /* Gradient background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 90%; /* Increased width */
+            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            padding: 30px;
+            border-radius: 15px; /* Increased roundness */
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+        }
+
+        .video-section, .avatar-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        video {
+            width: 100%;
+            max-width: 400px; /* Increased video width */
+            height: auto;
+            border-radius: 10px; /* Rounded corners for video */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for videos */
+        }
+
+        button, a {
+            margin: 15px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #66a6ff; /* Button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #89f7fe;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Video Section on the Left -->
+        <div class="video-section">
+            <h2>Record a Video</h2>
+            <video id="videoPreview" autoplay muted></video><br>
+            <button id="startBtn">Start</button>
+            <button id="stopBtn" disabled>Stop</button>
+            <a id="downloadLink" style="display:none">Download Video</a>
+        </div>
+
+        <!-- Avatar Video Section on the Right -->
+        <div class="avatar-section">
+            <h2>Avatar Video Response</h2>
+            <video id="avatarVideo" controls>
+                Your browser does not support the video element.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        // Set up video recording
+        const videoPreview = document.getElementById('videoPreview');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const downloadLink = document.getElementById('downloadLink');
+        const avatarVideo = document.getElementById('avatarVideo');
+        avatarVideo.innerHTML = '';
+
+        // Access the user's webcam and microphone
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(stream => {
+            window.stream = stream;
+            if (videoPreview.srcObject === null) {
+                videoPreview.srcObject = window.stream;
+            }
+
+            mediaRecorder = new MediaRecorder(window.stream);
+
+            mediaRecorder.ondataavailable = event => {
+                if (event.data.size > 0) {
+                    recordedChunks.push(event.data);
+                }
+            };
+
+            mediaRecorder.onstop = () => {
+                const videoBlob = new Blob(recordedChunks, { type: 'video/webm' });
+                const videoURL = URL.createObjectURL(videoBlob);
+                videoPreview.srcObject = null;
+                saveVideo(videoBlob);
+                videoPreview.srcObject= window.stream;
+                recordedChunks = [];
+            };
+        });
+
+        // Start recording
+        startBtn.addEventListener('click', () => {
+            mediaRecorder.start();
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+        });
+
+        // Stop recording
+        stopBtn.addEventListener('click', () => {
+            mediaRecorder.stop();
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        });
+
+        async function saveVideo(videoBlob) {
+            const formData = new FormData();
+            formData.append('video', videoBlob, 'video.webm');
+
+            try {
+                await fetch('http://127.0.0.1:5000/save-video', {
+                    method: 'POST',
+                    body: formData
+                }).then(response => response.blob())
+                .then(blob => {
+                    const avatarVideoUrl = URL.createObjectURL(blob);
+                    avatarVideo.src = avatarVideoUrl; // Set the avatar video source
+                    avatarVideo.controls = true;
+                    avatarVideo.innerHTML = '';
+                    avatarVideo.load();
+                    avatarVideo.play(); // Automatically play the avatar video
+                })
+                .catch(error => {
+                    console.error('Error fetching avatar video:', error);
+                    alert('An error occurred while fetching the avatar video.');
+                });
+            } catch (err) {
+                console.error('Error saving video:', err);
+            }
+        }
+    </script>
+</body>
+</html>
