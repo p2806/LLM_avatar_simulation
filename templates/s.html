@@ -91,7 +91,7 @@
         </div>
 
         <button id="generateFeedbackBtn">Generate Feedback</button>
-        <button id="audioPageBtn" onclick="location.href='/audio'">Go to Home Page</button>
+        <button id="audioPageBtn" onclick="location.href='audio.html'">Go to Audio Page</button>
 
         <div class="icons">
             <span class="icon like" id="likeBtn">👍</span>
@@ -105,7 +105,7 @@
             button.disabled = true;
             button.innerText = "Generating Feedback...";
 
-            fetch('/generate-feedback', {
+            fetch('http://127.0.0.1:5000/generate-feedback', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ conversation_id: 123 }) 
@@ -125,7 +125,7 @@
         });
 
         document.getElementById('likeBtn').addEventListener('click', () => {
-            fetch('/liked', {
+            fetch('http://127.0.0.1:5000/liked', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ liked : 'yes' }) 
@@ -140,7 +140,7 @@
         });
 
         document.getElementById('dislikeBtn').addEventListener('click', () => {
-            fetch('/liked', {
+            fetch('http://127.0.0.1:5000/liked', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ liked: 'No' }) 

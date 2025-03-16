@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Conversations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .conversation-list {
+            list-style: none;
+            padding: 0;
+        }
+        .conversation-item {
+            background-color: #fafafa;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            padding: 15px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+        .conversation-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .feedback {
+            color: #555;
+            font-style: italic;
+        }
+        .no-conversation {
+            text-align: center;
+            font-size: 18px;
+            color: #777;
+        }
+        .back-button {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 30px auto;
+            font-size: 16px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>User Conversations</h1>
+
+    {% if conversations %}
+        <ul>
+            {% for convo in conversations %}
+                <li class="conversation-item">
+                    <p><strong>Conversation:</strong> {{ convo.conversation }}</p>
+                    <p class="feedback"><strong>Feedback:</strong> {{ convo.feedback }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No conversations found.</p>
+    {% endif %}
+        
+        <!-- Back to Home Button -->
+        <a href="/" class="back-button">Back to Home</a>
+    </div>
+
+</body>
+</html>

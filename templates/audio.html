@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon-32x32.png" type="image/png">
-
     <title>Video Recorder and Audio Player</title>
     <style>
         body {
@@ -17,6 +16,7 @@
             margin: 0;
         }
 
+        /* Container Styling */
         .container {
             display: flex;
             justify-content: space-between;
@@ -25,8 +25,10 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
+        /* Video and Audio Sections */
         .video-section, .audio-section {
             flex: 1;
             display: flex;
@@ -50,9 +52,31 @@
         h2 {
             text-align: center;
         }
+
+        /* Style for the Past Conversations button */
+        .top-right-button {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .top-right-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Button for Past Conversations -->
+    <button id="pastConversationsBtn" class="top-right-button">Past Conversations</button>
 
     <div class="container">
         <!-- Video Section on the Left -->
@@ -63,7 +87,6 @@
             <button id="stopBtn" disabled>Stop Recording</button>
             <a href="{{ url_for('feedback') }}" class="small-button">End Conversation</a>
             <a id="downloadLink" style="display:none">Download Video</a>
-            
         </div>
 
         <!-- Audio Section on the Right -->
@@ -84,16 +107,15 @@
         const startBtn = document.getElementById('startBtn');
         const stopBtn = document.getElementById('stopBtn');
         const downloadLink = document.getElementById('downloadLink');
-		const audio = document.getElementById('audio');
+        const audio = document.getElementById('audio');
 
         // Access the user's webcam and microphone
         navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         .then(stream => {
-            
-            window.stream= stream;
-            if(videoPreview.srcObject === null){
-                       videoPreview.srcObject = window.stream;
-                  };
+            window.stream = stream;
+            if (videoPreview.srcObject === null) {
+                videoPreview.srcObject = window.stream;
+            }
 
             mediaRecorder = new MediaRecorder(window.stream);
 
@@ -104,11 +126,11 @@
             };
 
             mediaRecorder.onstop = () => {
-                const videoBlob = new Blob(recordedChunks, {type: 'video/webm'});
+                const videoBlob = new Blob(recordedChunks, { type: 'video/webm' });
                 const videoURL = URL.createObjectURL(videoBlob);
                 videoPreview.srcObject = null;
                 saveVideo(videoBlob);
-                videoPreview.srcObject= window.stream;
+                videoPreview.srcObject = window.stream;
                 recordedChunks = [];
             };
         });
@@ -126,31 +148,36 @@
             startBtn.disabled = false;
             stopBtn.disabled = true;
         });
-		async function saveVideo(videoBlob) {
+
+        async function saveVideo(videoBlob) {
             const formData = new FormData();
             formData.append('video', videoBlob, 'video.webm');
-    
+
             try {
-                await fetch('http://127.0.0.1:5000/save-video',{
-                        method: 'POST',
-                        body: formData
-                    }).then(response => response.blob())
-				.then(blob => {
-                        const audioUrl = URL.createObjectURL(blob);
-                        const audioElement = document.getElementById('audio');
-                        audioElement.src = audioUrl;
-                        audioElement.play();
-                    })
-				.catch(error => {
-                        console.error('Error fetching audio:', error);
-                        alert('An error occurred while fetching the audio file.');
-                    });
-                // Fetch the audio after saving the video
-                // await fetchAudio();
+                await fetch('/save-video', {
+                    method: 'POST',
+                    body: formData
+                }).then(response => response.blob())
+                .then(blob => {
+                    const audioUrl = URL.createObjectURL(blob);
+                    const audioElement = document.getElementById('audio');
+                    audioElement.src = audioUrl;
+                    audioElement.play();
+                })
+                .catch(error => {
+                    console.error('Error fetching audio:', error);
+                    alert('An error occurred while fetching the audio file.');
+                });
             } catch (err) {
                 console.error('Error saving video:', err);
             }
         };
+
+        // Redirect to past conversations page when clicked
+        document.getElementById('pastConversationsBtn').addEventListener('click', function() {
+            window.location.href = "/pastconv"; // Update with actual route
+        });
     </script>
+
 </body>
 </html>
