@@ -1,4 +1,3 @@
-from openai import OpenAI
 from ollama_serve import *
 from database_connection import *
 import ollama
@@ -15,28 +14,28 @@ import json
 import requests,json
 
 
-app=Flask(__name__)
+application=Flask(__name__)
 
 start_ollama_server()
 atexit.register(kill_ollama)
 
 
-@app.route("/")
+@application.route("/")
 def home():
-  return render_template("indexaudio.html")
-@app.route("/login")
+  return render_template("index.html")
+@application.route("/login")
 def login():
   return render_template("login.html")
-@app.route("/signup")
+@application.route("/signup")
 def signup():
   return render_template("signup.html")
-@app.route("/audio") 
+@application.route("/audio") 
 def audio():
   return render_template("audio.html")
-@app.route("/feedback")
+@application.route("/feedback")
 def feedback():
    return render_template("feedback.html")
-@app.route("/pastconv")
+@application.route("/pastconv")
 def pastconv():
    conversations = get_conversation_feedback(user_id)
    if conversations:
@@ -47,7 +46,7 @@ def pastconv():
 
 messages = []
 user_id = 123
-@app.route("/login", methods=['POST'])
+@application.route("/login", methods=['POST'])
 def user_login():
    data = request.get_json()
    username= data.get("username")
@@ -57,7 +56,7 @@ def user_login():
    user_id = response
    if response != 0:
       return "Login Successful"
-@app.route("/signup", methods=['POST'])
+@application.route("/signup", methods=['POST'])
 def user_signup():
    data = request.get_json()
    username= data.get("username")
@@ -69,7 +68,7 @@ def user_signup():
         return jsonify({"message": "Data inserted successfully!", "inserted_id": str(response.inserted_id)}), 201
    else:
         return jsonify({"message": "Data insertion failed!"}), 500
-@app.route("/liked", methods=['POST'])
+@application.route("/liked", methods=['POST'])
 def user_feedback():
    data = request.get_json()
    liked = data.get("liked")
@@ -82,7 +81,7 @@ def user_feedback():
 
    
    
-@app.route("/save-video", methods=['POST'])
+@application.route("/save-video", methods=['POST'])
 def save_video():
     if 'video' not in request.files:
         return "No video file part", 400
@@ -145,7 +144,7 @@ def save_video():
     return send_file('outputaudio.mp3', as_attachment=True)
 
 # generate feedback method
-@app.route("/generate-feedback", methods=['POST'])
+@application.route("/generate-feedback", methods=['POST'])
 def generate_feedback():
    #print(messages)
    global messages
@@ -277,4 +276,5 @@ def analyze_audio(audio_path):
     return metrics
 
 
-app.run()
+if __name__ == "__main__":
+    application.run(host="127.0.0.1", port=8000, debug = True)

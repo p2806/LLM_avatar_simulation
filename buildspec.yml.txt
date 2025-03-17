@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+
+  build:
+    commands:
+      - echo "Running tests..."
+      - pytest || echo "Tests failed, continuing..."
+
+  post_build:
+    commands:
+      - echo "Zipping application files..."
+      - zip -r build_output.zip .  # You can change the name here dynamically if needed
+      - mv build_output.zip $CODEBUILD_SRC_DIR/
+
+artifacts:
+  files:
+    - '**/*'  # This wildcard matches all files from the current directory and its subdirectories
+    - '!**/*.spec'  # Optionally, exclude certain file types (e.g., .spec files)

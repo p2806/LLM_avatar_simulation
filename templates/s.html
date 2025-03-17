@@ -3,156 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proactive Feedback</title>
+    <link rel="icon" href="/favicon-32x32.png" type="image/png">
+    <title>Proactive - AI Conversational Tool</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 30px auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 25px;
-            text-align: center;
-        }
-
-        h1 {
+            background-color: #f4f4f4;
             color: #333;
         }
-
-        .feedback-box {
-            padding: 20px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            background-color: #fff;
-            min-height: 200px;
-            font-size: 18px;
-            line-height: 1.6;
+        header {
+            background-color: #007bff;
+            color: #fff;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+            padding: 20px 30px;
+        }
+        header .nav-links {
+            display: flex;
+        }
+        header .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        header .auth-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .hero {
+            background: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .cta-button {
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .features, .about, .testimonials {
+            padding: 40px 20px;
             text-align: center;
         }
-
-        .icons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 15px;
+        .features h2, .about h2, .testimonials h2 {
+            font-size: 2em;
+            margin: 20px 0;
         }
-
-        .icon {
-            font-size: 40px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
+        .feature, .testimonial {
+            margin: 20px 0;
         }
-
-        .icon:hover {
-            transform: scale(1.2);
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
         }
-
-        .like {
-            color: green;
-        }
-
-        .dislike {
-            color: red;
-        }
-
-        button {
-            background-color: #0056b3;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            margin-top: 20px;
-        }
-
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Conversation Feedback</h1>
-
-        <div class="feedback-box" id="feedback-container">
-            Click "Generate Feedback" to view the feedback.
+    <header>
+        <div class="nav-links">
+            <a href="#">Proactive</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </div>
+        <div class="auth-links">
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('signup') }}">Signup</a>
+        </div>
+    </header>
+    <div class="hero">
+        <h1>Welcome to PROaCTIVE</h1>
+        <p>Experience the future of AI conversations.</p>
+        <a href="{{ url_for('audio') }}" class="cta-button">Let's Practice</a>
 
-        <button id="generateFeedbackBtn">Generate Feedback</button>
-        <button id="audioPageBtn" onclick="location.href='audio.html'">Go to Audio Page</button>
-
-        <div class="icons">
-            <span class="icon like" id="likeBtn">👍</span>
-            <span class="icon dislike" id="dislikeBtn">👎</span>
+        <!-- Video Player -->
+        <div class="video-container">
+            <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+                <source src="your-video-file.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </div>
-
-    <script>
-        document.getElementById('generateFeedbackBtn').addEventListener('click', () => {
-            const button = document.getElementById('generateFeedbackBtn');
-            button.disabled = true;
-            button.innerText = "Generating Feedback...";
-
-            fetch('http://127.0.0.1:5000/generate-feedback', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ conversation_id: 123 }) 
-            })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('feedback-container').innerText = data;
-                button.disabled = false;
-                button.innerText = "Generate Feedback";
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while generating feedback.');
-                button.disabled = false;
-                button.innerText = "Generate Feedback";
-            });
-        });
-
-        document.getElementById('likeBtn').addEventListener('click', () => {
-            fetch('http://127.0.0.1:5000/liked', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ liked : 'yes' }) 
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert('You liked the feedback!');
-            })
-            .catch(error => {
-                alert('Network Issue');
-            });
-        });
-
-        document.getElementById('dislikeBtn').addEventListener('click', () => {
-            fetch('http://127.0.0.1:5000/liked', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ liked: 'No' }) 
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert('You disliked the feedback.');
-            })
-            .catch(error => {
-                alert('Network Issue');
-            });
-        });
-    </script>
+    <div id="features" class="features">
+        <h2>Features</h2>
+        <div class="feature">
+            <h3>Interactive Chat</h3>
+            <p>Engage in dynamic conversations with our advanced AI.</p>
+        </div>
+        <div class="feature">
+            <h3>Real-Time Responses</h3>
+            <p>Get instant replies and solutions tailored to your needs.</p>
+        </div>
+        <div class="feature">
+            <h3>Customizable Experience</h3>
+            <p>Personalize the AI interactions to suit your preferences.</p>
+        </div>
+    </div>
+    <div id="about" class="about">
+        <h2>About Us</h2>
+        <p>Proactive is designed to revolutionize how you interact with AI, providing a seamless and intuitive conversational experience.</p>
+    </div>
+    <div id="testimonials" class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial">
+            <p>"Proactive has changed the way I interact with technology. The AI is incredibly intuitive and helpful!"</p>
+            <cite>- Alex Smith</cite>
+        </div>
+        <div class="testimonial">
+            <p>"An amazing tool for anyone looking to streamline their conversations and tasks. Highly recommend!"</p>
+            <cite>- Jamie Lee</cite>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Proactive. All rights reserved.</p>
+        <a href="#contact">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+    </footer>
 </body>
 </html>
