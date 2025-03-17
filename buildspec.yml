@@ -3,7 +3,11 @@ version: 0.2
 phases:
   install:
     runtime-versions:
+<<<<<<< HEAD
       python: 3.12
+=======
+      python: 3.9
+>>>>>>> 2ae1e489880423214345518d55f0093aeb021ad1
     commands:
       - pip install --upgrade pip
       - pip install -r requirements.txt
@@ -16,6 +20,7 @@ phases:
   post_build:
     commands:
       - echo "Zipping application files..."
+<<<<<<< HEAD
       - zip -r build_output.zip .  # You can change the name here dynamically if needed
       - mv build_output.zip $CODEBUILD_SRC_DIR/
 
@@ -23,3 +28,11 @@ artifacts:
   files:
     - '**/*'  # This wildcard matches all files from the current directory and its subdirectories
     - '!**/*.spec'  # Optionally, exclude certain file types (e.g., .spec files)
+=======
+      - zip -r application.zip .
+      - mv application.zip $CODEBUILD_SRC_DIR/
+
+artifacts:
+  files:
+    - application.zip
+>>>>>>> 2ae1e489880423214345518d55f0093aeb021ad1
