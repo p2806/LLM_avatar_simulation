@@ -14,28 +14,28 @@ import json
 import requests,json
 
 
-application=Flask(__name__)
+app=Flask(__name__)
 
 start_ollama_server()
 atexit.register(kill_ollama)
 
 
-@application.route("/")
+@app.route("/")
 def home():
   return render_template("index.html")
-@application.route("/login")
+@app.route("/login")
 def login():
   return render_template("login.html")
-@application.route("/signup")
+@app.route("/signup")
 def signup():
   return render_template("signup.html")
-@application.route("/audio") 
+@app.route("/audio") 
 def audio():
   return render_template("audio.html")
-@application.route("/feedback")
+@app.route("/feedback")
 def feedback():
    return render_template("feedback.html")
-@application.route("/pastconv")
+@app.route("/pastconv")
 def pastconv():
    conversations = get_conversation_feedback(user_id)
    if conversations:
@@ -46,7 +46,7 @@ def pastconv():
 
 messages = []
 user_id = 123
-@application.route("/login", methods=['POST'])
+@app.route("/login", methods=['POST'])
 def user_login():
    data = request.get_json()
    username= data.get("username")
@@ -56,7 +56,7 @@ def user_login():
    user_id = response
    if response != 0:
       return "Login Successful"
-@application.route("/signup", methods=['POST'])
+@app.route("/signup", methods=['POST'])
 def user_signup():
    data = request.get_json()
    username= data.get("username")
@@ -68,7 +68,7 @@ def user_signup():
         return jsonify({"message": "Data inserted successfully!", "inserted_id": str(response.inserted_id)}), 201
    else:
         return jsonify({"message": "Data insertion failed!"}), 500
-@application.route("/liked", methods=['POST'])
+@app.route("/liked", methods=['POST'])
 def user_feedback():
    data = request.get_json()
    liked = data.get("liked")
@@ -81,7 +81,7 @@ def user_feedback():
 
    
    
-@application.route("/save-video", methods=['POST'])
+@app.route("/save-video", methods=['POST'])
 def save_video():
     if 'video' not in request.files:
         return "No video file part", 400
@@ -101,7 +101,7 @@ def save_video():
         
         #audio_file = video_to_audio('uploaded_video.webm', 'audio.wav')
         #content = 'Summarize this in **15 or less words**:[You are a patient role-playing scenario for the purpose of training nursing students. As a patient, you should ask for a variety of things that require the nursing student to say \'no\'. Do not take on the role of a nurse or provide medical advice. Instead, insist or ask in different ways if your request is declined, while maintaining a realistic patient perspective. Dont stick too rigidly to the script. If they ask questions, respond in a realistic way, but bring the conversation back to your request.]';
-        content = '[IMPORTANT:You are a persistent difficult PATIENT approaching nurse, requesting denied items realistically without medical advice.Behave like a patient who is talking to a nurse and put them in a critical situation.Be precise with the question, be more human, organic and natural. Be precise in asking questions. Ask question in 15 words. Donot ask all at a time make it feel like a conversation]';
+        content = '[IMPORTANT:You are a persistent difficult PATIENT approaching nurse, requesting denied items realistically without medical advice.Behave like a patient who is talking to a nurse and put them in a critical situation.Be precise with the question, be more human, organic and natural. Be precise in asking questions. Ask question in 15 words. Donot ask all at a time make it feel like a conversation. **DO NOT ALWAYS ASK ABOUT MEDICATIONS ASK DIFFERENTLY EVERYTIME**]';
         messages = [
         {"role": "system", "content":content}
         ]
@@ -144,7 +144,7 @@ def save_video():
     return send_file('outputaudio.mp3', as_attachment=True)
 
 # generate feedback method
-@application.route("/generate-feedback", methods=['POST'])
+@app.route("/generate-feedback", methods=['POST'])
 def generate_feedback():
    #print(messages)
    global messages
@@ -179,7 +179,7 @@ def generate_feedback():
    prompt = f"""
     IMPORTANT: Please analyse the below transcript carefully and give the feedback for "NUSRING STUDENT" based on the below metrics
     Analyse NURSING STUDENTS response for the patients questions. Focus on NURSING STUDENSTS RESPONSES in the below transcript.
-    
+    ***GIVE SPECIFIC INSTANCES FROM THE TRANSCRIPT***
     Transcript:
     {transcript}
 
@@ -277,4 +277,4 @@ def analyze_audio(audio_path):
 
 
 if __name__ == "__main__":
-    application.run(host="127.0.0.1", port=8000, debug = True)
+    app.run(host="127.0.0.1", port=5000, debug = True)
