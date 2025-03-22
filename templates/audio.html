@@ -175,7 +175,7 @@
 
         // Redirect to past conversations page when clicked
         document.getElementById('pastConversationsBtn').addEventListener('click', function() {
-            window.location.href = "/pastconv"; // Update with actual route
+            window.location.href = "{{ url_for('pastconv') }}"; // Update with actual route
         });
     </script>
 
