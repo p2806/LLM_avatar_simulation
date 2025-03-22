@@ -85,7 +85,7 @@
             .then(response => {
               if (response.ok) {
                     // Redirect to another page upon successful login
-                    window.location.href = "/audio";  // Change this to your desired page
+                    window.location.href = "{{ url_for('audio') }}";   // Change this to your desired page
                 } else {
                     alert("Login Failed!Invalid username or password");  // Return error message if login fails
                 }
