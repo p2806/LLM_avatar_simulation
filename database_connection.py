@@ -18,7 +18,7 @@ def dbconnection():
     DBNAME = os.getenv("DBNAME")
     COLLECTION = os.getenv("COLLECTION")
    
-    client = MongoClient(Mongo_URI)
+    client = MongoClient(Mongo_URI, tlsCAFile=certifi.where())
     db = client[DBNAME]
     users_collection = db[COLLECTION]
     return users_collection
