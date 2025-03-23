@@ -92,7 +92,7 @@ def save_video():
         file.save('uploaded_video.webm')
 
    
-    ffmpeg_path = r'/opt/homebrew/bin/ffmpeg'
+    ffmpeg_path = r'/usr/bin/ffmpeg'
     command=[ffmpeg_path,'-y','-i','uploaded_video.webm','-acodec','pcm_s16le','-q:a','0','-map','a','audio.wav']
     result = subprocess.run(command,check=True,stderr=subprocess.PIPE,stdout=subprocess.PIPE,text=True)
     
