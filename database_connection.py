@@ -14,11 +14,12 @@ import os
 
 def dbconnection():
    
-    load_dotenv()   
+    load_dotenv()
     Mongo_URI = os.getenv("MONGO_KEY")
     DBNAME = os.getenv("DBNAME")
     COLLECTION = os.getenv("COLLECTION")
-   
+
+    #Mongo_URI = "mongodb+srv://dbuser:dbuser123@cluster0.0l9sn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     client = MongoClient(Mongo_URI, tlsCAFile=certifi.where())
     db = client[DBNAME]
     users_collection = db[COLLECTION]

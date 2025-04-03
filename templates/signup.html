@@ -86,7 +86,7 @@
             .then(response => {
               if (response.ok) {
                     // Redirect to another page upon successful login
-                    window.location.href = "{{ url_for('login') }}";  // Change this to your desired page
+                    window.location.href = "{{ url_for('login') }}"; // Change this to your desired page
                 } else {
                     alert("Sign UP Failed. Please try again");  // Return error message if login fails
                 }
