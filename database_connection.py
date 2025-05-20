@@ -43,14 +43,32 @@ def create_user(username,password):
             "password": password
         }
         return dbconnection().insert_one(user_data)
-def add_field_to_user(user_id, new_field):
+def add_field_to_user(user_id,conversation_id, new_field):
     try:
         
         collection = dbconnection()
         # Update the user document by adding a new field
         result = collection.update_one(
-            {"_id": ObjectId(user_id)}, 
+            {"_id": ObjectId(user_id), "conversation_id": conversation_id}, 
             {"$set": {"liked": new_field}}
+        )
+    
+        # Check if the update was successful
+        if result.matched_count > 0:
+            return "Field added successfully."
+        else:
+            return "User not found."
+
+    except Exception as e:
+        print("Error:", e)
+def add_comment_to_user(user_id, conversation_id, new_field):
+    try:
+        
+        collection = dbconnection()
+        # Update the user document by adding a new field
+        result = collection.update_one(
+            {"_id": ObjectId(user_id),"conversation_id": conversation_id}, 
+            {"$set": {"comment": new_field}}
         )
     
         # Check if the update was successful
