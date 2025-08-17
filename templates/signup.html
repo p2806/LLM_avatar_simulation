@@ -24,13 +24,14 @@
             text-align: center;
             color: #333;
         }
-        input[type="text"], input[type="password"], input[type="username"] {
-            width: 90%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+        input[type="text"], input[type="password"], select {
+    width: 100%;               /* Changed from 95% to 100% */
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;   /* Ensures padding doesn't break layout */
+}
         button {
             width: 100%;
             padding: 14px;
@@ -61,35 +62,61 @@
 <body>
     <div class="container">
         <h2>Create a New Account</h2>
-        <form action="#" method="post">
-            <input id ="username" type="username" placeholder="username" required>
-            <input id ="password" type="password" placeholder="Password" required>
-            <input id ="cpassword" type="password" placeholder="Confirm Password" required>
-            <button id = "signup" type="submit">Sign Up</button>
+        <form id="signup-form">
+            <input id="username" type="text" placeholder="Username" required>
+            <input id="password" type="password" placeholder="Password" required>
+            <input id="cpassword" type="password" placeholder="Confirm Password" required>
+
+            <select id="role" required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="student">Student</option>
+                <option value="professor">Professor</option>
+            </select>
+
+            <button id="signup" type="submit">Sign Up</button>
         </form>
         <div class="login-link">
             <p>Already a user? <a href="{{ url_for('login') }}">Login</a></p>
         </div>
     </div>
+
     <script>
-        document.getElementById('signup').addEventListener('click', () => {
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
             const button = document.getElementById('signup');
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const cpassword = document.getElementById("cpassword").value;
+            const role = document.getElementById("role").value;
+
+            if (password !== cpassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
             button.disabled = true;
 
             fetch('/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: username, password: password })
+                body: JSON.stringify({ username: username, password: password, role: role })
             })
             .then(response => {
-              if (response.ok) {
-                    // Redirect to another page upon successful login
-                    window.location.href = "{{ url_for('login') }}"; // Change this to your desired page
+                if (response.ok) {
+                    window.location.href = "{{ url_for('login') }}";
+                } else if (response.status === 409) {
+                    alert("Username already exists. Try a different one.");
+                    button.disabled = false;
                 } else {
-                    alert("Sign UP Failed. Please try again");  // Return error message if login fails
+                    alert("Sign Up Failed. Please try again.");
+                    button.disabled = false;
                 }
+            })
+            .catch(error => {
+                console.error("Signup error:", error);
+                alert("An error occurred during sign up.");
+                button.disabled = false;
             });
         });
     </script>

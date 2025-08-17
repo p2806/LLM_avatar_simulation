@@ -25,22 +25,23 @@ def dbconnection():
     users_collection = db[COLLECTION]
     return users_collection
 
-def verify_user(username, password):
-    user = dbconnection().find_one({"username": username})
+def verify_user(username, password,role):
+    user = dbconnection().find_one({"username": username, "role": role})
 
     if user:
         user_id = user["_id"]
         return user_id
     else:
-        return 0
-def create_user(username,password):
-    user = dbconnection().find_one({"username": username})
+        return 0 
+def create_user(username,password,role):
+    user = dbconnection().find_one({"username": username, "role": role})
     if user:
         return "Member already exists"
     else:
         user_data = {
             "username": username,
-            "password": password
+            "password": password,
+            "role": role
         }
         return dbconnection().insert_one(user_data)
 def add_field_to_user(user_id,conversation_id, new_field):
@@ -80,12 +81,12 @@ def add_comment_to_user(user_id, conversation_id, new_field):
     except Exception as e:
         print("Error:", e)
 
-def add_conversation_feedback(user_id, conversation, feedback):
+def add_conversation_feedback(user_id,conversation_id, conversation, feedback):
     try:
        
         collection = dbconnection()
         # Create a new conversation entry
-        new_entry = {"conversation": conversation, "feedback": feedback}
+        new_entry = {"conversation_id":conversation_id,"conversation": conversation, "feedback": feedback}
 
         # Update the user's document by appending to the 'conversations' list
         result = collection.update_one(

@@ -1,0 +1,25 @@
+WWW9: Gastrointestinal
+Terrence Martin, a 45-year-old male, presents with a three-month history of intermittent abdominal discomfort, bloating, heartburn, and alternating episodes of diarrhea and constipation. He experiences nausea and flatulence, with a burning sensation in his chest after meals, especially following the consumption of spicy and fatty foods. He has been using over-the-counter antacids and probiotics, which offer some relief. His diet is low in fiber, and he occasionally supplements with fiber for constipation. He denies vomiting, weight loss, alcohol abuse, or gastrointestinal bleeding, though his father had a history of GERD.
+On physical examination, his abdomen is soft but slightly distended, with mild tenderness in the left lower quadrant, though no guarding or rebound tenderness is noted. Bowel sounds are normal, and no abnormal abdominal bruits are heard. Inspection of the oral mucosa is unremarkable, and no external hemorrhoids or fissures are present on rectal examination. An abdominal X-ray shows no obstruction, and an abdominal ultrasound reveals no abnormalities. However, an upper endoscopy confirms mild esophagitis and a hiatal hernia, while a colonoscopy reveals scattered diverticula in the sigmoid colon but no signs of malignancy or inflammatory bowel disease (IBD). Laboratory tests include a complete blood count, a comprehensive metabolic panel, and a stool culture that was negative for pathogens. A urea breath test was positive for H. pylori infection.
+Here are other associated diagnostic evaluation findings:
+Complete Blood Count (CBC)
+Hemoglobin (Hgb): 13.5–17.5 g/dL = 16 g/dL
+Hematocrit (Hct): 38.8–50.0% = 42%
+White blood cell count (WBC): 4,500–11,000 cells/µL = 10,500 cells/µL
+Red blood cell count (RBC): 4.7–6.1 million cells/µL = 5.5 cells/µL
+Platelet count: 150,000–450,000/µL = 327,000µL
+2. Comprehensive Metabolic Panel (CMP)
+Albumin: 3.5–5.0 g/dL = 4.6 g/dL
+Blood Urea Nitrogen (BUN): 7–20 mg/dL
+Creatinine: 0.6–1.2 mg/dL
+Electrolytes - 
+Sodium: 3.5–5.0 mEq/L =  130mEq/L
+Potassium = 3.2 mEq/L
+Chloride: 98–106 mEq/L = 96 mEq/L.
+Liver enzymes (AST, ALT, ALP): Within normal limits.
+Interpretation: Slightly low albumin could indicate mild malabsorption, possibly linked to IBS and altered digestion.
+Diagnostic Evaluation:
+Laboratory Tests:
+Stool culture: Negative for infectious pathogens.
+H. pylori test: Urea breath test positive for H. pylori infection.
+ 

@@ -14,13 +14,14 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 import ffmpeg as ffmpeg
 import re
 import subprocess,random
-import requests,json
+import requests,json,boto3
+from docx import Document
 
 
 app=Flask(__name__)
 
-start_ollama_server()
-atexit.register(kill_ollama)
+#start_ollama_server()
+#atexit.register(kill_ollama)
 
 
 @app.route("/")
@@ -35,6 +36,9 @@ def patients():
 @app.route("/login")
 def login():
   return render_template("login.html")
+@app.route("/upload")
+def upload():
+  return render_template("upload.html")
 @app.route("/signup")
 def signup():
   return render_template("signup.html")
@@ -59,22 +63,58 @@ messages = []
 use_case ='dummy'
 user_id = 123
 conversation_id = 123
+file_contents = "global"
 @app.route("/login", methods=['POST'])
 def user_login():
    data = request.get_json()
    username= data.get("username")
    password = data.get("password")
-   response = verify_user(username,password)
+   role = data.get("role")
+   response = verify_user(username,password,role)
    global user_id
    user_id = response
    if response != 0:
-      return "Login Successful"
+      if role == "professor":
+         return "Professor"
+      else:
+         return "Student"
+   else:
+      return "Login Not Successful"
+@app.route("/upload", methods=['POST'])
+def file_upload():
+   if 'file' not in request.files:
+        return jsonify({'error': 'No file part in request'}), 400
+
+   uploaded_file = request.files['file']
+   document = Document(uploaded_file)
+
+   if uploaded_file.filename == '':
+        return jsonify({'error': 'No file selected'}), 400
+
+   try:
+        # Read the file content (text mode)
+        global file_contents
+        file_contents = "\n".join([para.text for para in document.paragraphs])
+        print("Uploaded File Contents:\n", file_contents)
+
+        # You can also parse it here if it's a CSV, JSON, etc.
+        with open("output.txt", "w", encoding="utf-8") as f:
+            f.write(file_contents)
+
+
+        return jsonify({'message': 'File uploaded and read successfully'}), 200
+
+   except Exception as e:
+        print(e) 
+        return jsonify({'error': f'Failed to read file: {str(e)}'}), 500
+    
 @app.route("/signup", methods=['POST'])
 def user_signup():
    data = request.get_json()
    username= data.get("username")
    password = data.get("password")
-   response = create_user(username,password)
+   role = data.get("role")
+   response = create_user(username,password,role)
    global user_id
    user_id = response.inserted_id
    if response.acknowledged:
@@ -139,7 +179,8 @@ def save_video():
         elif use_case == "sophia":
            content = SophiaPatel()
         else:
-           content = other()
+           #global file_contents
+           content = Professor(file_contents)
         messages = [
         {"role": "system", "content":content}
         ]
@@ -159,7 +200,7 @@ def save_video():
             {"role": "user", "content": text},
         )
     chat = client.chat.completions.create(
-            model="gpt-4o", messages= messages,temperature=0.7
+            model="gpt-4o", messages= messages,temperature=0.7 
         )
     reply = chat.choices[0].message.content
    
@@ -168,8 +209,15 @@ def save_video():
     messages.append({"role": "assistant", "content": reply})
     print(reply)
     #speech_file_path = 'outputaudio.wav'
-    tts = gTTS(text=reply, lang='en')
-    tts.save("outputaudio.mp3")
+    #tts = gTTS(text=reply, lang='en')
+    audio_response = client.audio.speech.create(
+         model="tts-1",            # or "tts-1-hd" for higher quality
+         voice="onyx",             # or shimmer, nova, echo, alloy, fable
+         input=reply
+      )
+    with open("outputaudio.mp3", "wb") as f:
+         f.write(audio_response.content)
+    #tts.save("outputaudio.mp3")
 
    # creating an avatar video
     

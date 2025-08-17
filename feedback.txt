@@ -1,0 +1,217 @@
+Clinic Note Form
+
+ Chief Complaint:
+
+ “Three-month history of intermittent abdominal discomfort, bloating, heartburn, and
+ alternating episodes of diarrhea and constipation.”
+ History of Present Illness (HPI):
+Terrence Martin, a 45-year-old male, presents with a three-month history of intermittent abdominal discomfort, bloating, heartburn, and alternating episodes of diarrhea and constipation. He experiences nausea and flatulence, with a burning sensation in his chest after meals, especially following the consumption of spicy and fatty foods. He has been using over-the-counter antacids and probiotics, which offer some relief. His diet is low in fiber, and he
+ occasionally supplements with fiber for constipation. He denies vomiting, weight loss, alcohol abuse, or gastrointestinal bleeding, though his father had a history of GERD.
+ Allergies:
+ Mr. Martin did not know about drugs, food, or environmental allergies.
+ The patient will be assessed for rashes, itching, swelling, nasal congestion, discharge, swelling  in the eyes, wheezing, or breathing difficulties and asked if certain substances, such as food, medications, or environmental factors like pollen or dust mites, trigger them.
+Additionally, if any previous reaction occurred during treatment, such as anaphylaxis.
+
+ Current Medications:
+ a. Over-the-counter antacids
+ b. Probiotics
+ c. Occasional fiber supplements
+ The dose and frequency of these medications would be investigated, and the last known time
+ he took his medication would also be asked.
+History of Illnesses (Onset of symptoms, Location/Duration, Characteristics, Aggravating/Alleviating factors, Related symptoms, Attempts at self-treatment, Severity)
+ & Hospitalizations:
+ • Onset: Symptoms began three months ago.
+ • Location/Duration: Abdomen (Generalized abdominal area with intermittent discomfort,
+ more noticeable in the left lower quadrant) and chest (especially after meals, with episodes
+ lasting about 1-2 hours depending on food intake).
+ • Characteristics: intermittent bloating and mild tenderness, burning sensation in the chest,
+ alternating episodes of diarrhea and constipation
+ • Aggravating factors: Diet (Symptoms worsen after eating spicy or fatty foods and a low-fiber diet).
+ • Alleviating factors: Antacids, probiotics, and fiber supplements.
+ • Related symptoms: Nausea and flatulence.
+ • Attempts at self-treatment: Over-the-counter antacids (used intermittently for heartburn and
+ provide partial relief), probiotics (used to relieve bloating, ad GI discomfort, and mild
+ improvement), and fiber supplements (taken occasionally for constipation with some relief).
+ • Severity: Moderate (Intermittent discomfort).
+ • Hospitalization: No prior hospitalizations or surgeries were mentioned. Inquiries will be made
+ about past hospital visits and hospitalizations. The patient will be admitted to the inpatient unit
+ Vaccine Status:
+ The patient did not mention any vaccination.
+ The patient’s electronic health record (EHR) would be accessed for vaccination records.
+ Inquiries would be made about recent and past vaccinations, travel history, and special
+ vaccinations.
+
+ Medical/Surgical History:
+ No significant past medical history was provided. The patient would be asked about any past
+ medical diagnosis.
+ Family History:
+ The father had a history of GERD.
+ The patient will be asked if there is any other family background besides GERD, like peptic
+ ulcers, IBS, or diverticulosis.
+ Social History (Domains - Economic stability/Neighborhood/social
+ belonging/education/healthcare access & quality:
+ • Economic stability/ Neighborhood: The patient would be asked about employment, housing
+ security (house, apartment, homelessness), and food supply (food stamps, WIC,
+ community/church/government assistance).
+ • Education: The educational background would be evaluated to note the level of education
+ acquired, as this can impact how the information/teaching of this hospitalization is perceived.
+ Is the patient health-literate?
+ • Healthcare access and quality: The patient will be asked about financial barriers to care, such
+ as the cost of medications, co-pays, and insurance status, as this helps to identify potential
+ obstacles to healthcare and identify plans to address them to improve care
+ • Smoking history: None was mentioned. Inquiry would be made about smoking habits, how long he has been a smoker, and how many packs per day he smokes.
+ • Alcohol/illicit drug use: An inquiry into alcohol consumption will be made. How many
+ bottles per day, and how often does he drink? Is there any illegal drug use?
+ Diet (24-hour recall and typicals including fluids):
+ There was no mention of diet consumed in the last 24 hours. H reported consuming a low-fiber
+ diet and spicy and fatty foods. An inquiry would be made into how much water he drank as he
+ complained of constipation.
+ Review of Systems (ROS):
+ • General: No Fever, weight loss, chills, fatigue, or night sweats.
+ • Pulmonary: No dyspnea, wheezing, shortness of breath or cough.
+ • Cardiovascular: Heartburn.
+ • Negative: An inquiry would be made about chest pain or palpitations, dizziness, or shortness
+ of breath, apart from the burning sensation associated with meals.
+ • Gastrointestinal: Reports abdominal discomfort, bloating, heartburn, nausea, burning
+ sensation in the chest after meals, constipation alternating with diarrhea, and flatulence.
+ Negative: vomiting, melena, or hematochezia
+ Musculoskeletal:
+ Negative: No joint pain, muscle aches, stiffness, or swelling.
+ Genitourinary:
+ Negative: No urinary symptoms reported.
+ • Neurological:
+ Negative: Headache, dizziness, seizures, tingling, numbness, fainting or weakness.
+ • Endocrine: Inquiries about recent weight, heat, or cold intolerance changes will be made.
+ • Head, Eyes, Ears, Nose, Throat (HEENT):
+ Negative: No headaches, vision changes, hearing loss, sore throat, or nasal congestion
+ • Integumentary:
+ • Negative: No Pruritus, rashes, lesions, or skin discoloration.
+ •
+
+ Objective Findings (MAY NEED TO STOP HERE FOR the SCENERIO)
+ 1. Physical Exam:
+ 2. a. Abdomen: Soft but slightly distended, with mild tenderness in the left lower quadrant,
+ though no guarding or rebound tenderness is noted.
+ 3. b. Other: Bowel sounds are normal, and no abnormal abdominal bruits are heard. Inspection of
+ the oral mucosa is unremarkable, and no external hemorrhoids or fissures are present on rectal
+ examination.
+
+ Diagnostic Imaging and Endoscopic Findings:
+ a. Abdominal X-ray: No obstruction.
+ b. Abdominal Ultrasound: No abnormalities.
+ c. Upper Endoscopy: Mild esophagitis and a hiatal hernia.
+ d. Colonoscopy: Scattered diverticula in the sigmoid colon, no malignancy or signs of
+ inflammatory bowel disease (IBD)
+ Laboratory Findings:
+ 1. Complete Blood Count (CBC):
+ a. Hemoglobin (Hgb): 16 g/dL (normal)
+ b. Hematocrit (Hct): 42% (normal)
+ c. White Blood Cell Count (WBC): 10,500 cells/μL (within normal limits)
+ d. Platelet Count: 327,000 μL (normal)
+ 2. Comprehensive Metabolic Panel (CMP):
+ a. Albumin: 4.6 g/dL (normal)
+ b. Sodium: 130 mEq/L (slightly low)
+ c. Potassium: 3.2 mEq/L (low)
+ d. Chloride: 96 mEq/L (slightly low)
+ e. Liver Enzymes (AST, ALT, ALP): Within normal limits
+ 3. Stool Culture: Negative for pathogens.
+ 4. H. pylori Test: Urea breath test positive for H. pylori infection.
+ Findings:
+ a. H. pylori Infection: A positive urea breath test indicates H. pylori infection, which can be attributed to conditions like gastritis and peptic ulcer disease and present as heartburn, nausea, and upper abdominal discomfort.
+ b. Hiatal Hernia and Esophagitis: These were seen on the upper endoscopy result, which can be attributed to GERD symptoms, such as chest burn post-prandial.
+ c. Diverticulosis: Scattered diverticula in the sigmoid colon can cause lower abdominal discomfort and altered bowel habits.
+ d. Electrolyte Imbalance: Slightly low sodium, potassium, and chloride could indicate malabsorption or dietary insufficiency, which can be attributed to the patient’s consumption of a low-fiber diet.
+ e. Mild Malabsorption Indicators: Episodes of constipation and mildly low potassium suggest this.
+
+ 1. Repeat Urea breath test for H. Pylori Eradication: A repeat test in 4-6 weeks will confirm the eradication of H. Pylori after completing the antibiotic regimen.
+ 2. Repeat Comprehensive Metabolic Panel (CMP): Monitor the CMP for 4-6 weeks during
+ follow-up appointments, especially sodium and potassium, to note the resolution of mild
+ hyponatremia and hypokalemia. This aids in preventing fatigue, muscle cramps, and possible
+ cardiac issues.
+ 3. Follow-up Complete Blood Count (CBC): Monitor for anemia.
+ 4. Medication review and adjustment: evaluate the effectiveness of PPI therapy for GERD in
+ 4-6 weeks with possible routine follow-up, and depending on the response, consider adjusting
+ or alternating medications like H2 blockers.
+Clinic Note Form
+ 5. Monitor for signs of diverticulitis: If symptoms continue and symptoms of diverticulitis are
+ noted, imaging (CT scan) will be required, and possible antibiotic therapy will be started.
+ 6. Periodic assessment for IBS symptoms: Monitor and modify treatment strategies for IBS
+ annually or sooner if new symptoms arise or constipation and diarrhea persist. Routinely
+ monitor blood pressure, cholesterol, and weight as part of comprehensive care.
+ 7. Nutritional and Lifestyle Counseling: At each follow-up appointment, reiterate the
+ importance of a high-fiber diet and discuss any challenges in adhering to dietary
+ recommendations. Provide dietary resources or refer to a nutritionist if needed.
+ *Physical Exam Brief Support Tool
+ 
+Clinic Note Form
+Clinic Note Form
+ Plan:
+ 1.H. pylori infection
+ a. a. Triple therapy regimen (e.g., proton pump inhibitor, amoxicillin, and clarithromycin) to treat
+ H. pylori infection.
+ 2. GERD and Esophagitis
+ a. a. Proton pump inhibitor (PPI)
+ b. Lifestyle modifications, including avoiding spicy/fatty foods, eating smaller meals, and
+ avoiding lying down immediately after eating
+ 3. Diverticulosis and IBS Symptoms
+ a. a. More fiber-containing foods to alleviate diverticulosis and improve bowel regularity.
+ b. b. Antispasmodic for IBS symptoms if needed
+ 4. Replete electrolyte
+ a. a. Encourage the patient to consume a diet containing sodium and potassium to correct mild
+ hyponatremia and hypokalemia.
+ b. b. Re-evaluate electrolyte levels in follow-up appointments.
+ 5. Referral to a gastroenterologist to monitor symptoms. We may need to repeat the scope and
+ collect a biopsy depending on the findings if the symptoms continue.
+ 
+Clinic Note Form
+ Follow Up:
+ 1. Follow-up visit with primary care provider (PCP) and gastroenterologist (GI) in 4–6 Week
+ a. a. Review progress with H. pylori treatment, symptom management with GERD, and dietary
+ changes.
+ b. b. Repeat urea breath test for H. pylori, CBC, and electrolyte levels.
+ c. c. Adjust medications as needed based on symptom response
+ 2. Follow up with a nutritionist to provide a plan for dietary changes.
+ 3. Annual Health Screening and Preventive Care: follow up with symptom diary to review any
+ new or related health issues as they arise, especially given his family history of GERD and
+ gastrointestinal concerns.
+ Education:
+ 1. The patient should be educated on H. pylori infection, GERD, hiatal hernia, IBS, and
+ diverticulosis.
+Clinic Note Form
+ a. A. H. pylori Infection is a bacterium that can affect the stomach's protection or lining, causing
+ inflammation and ulcers. Symptoms include abdominal discomfort, bloating, and nausea. H.
+ pylori can be treated with a combination of antibiotics and acid-suppressing medications.
+ b. B. Diverticulosis is a condition in which small pouches, called diverticula, form in the large
+ intestine's (colon) walls. These pouches become irritated due to factors like infection, leading
+ to inflammation and discomfort. Drinking lots of fluids and eating foods high in fiber is
+ essential to avoid constipation.
+ c. C. Irritable Bowel Syndrome (IBS) is a chronic condition that affects the large intestine,
+ causing symptoms like abdominal pain, bloating, and changes in bowel habits (diarrhea and
+ constipation). It can be managed with lifestyle and dietary modifications, such as gradually
+ increasing fiber intake, reducing trigger foods (caffeine, dairy, high-fat foods), and stress
+ management. Probiotics and over-the-counter fiber supplements may also help regulate bowel
+ movements.
+ d. D. Hiatal Hernia occurs when a part of the stomach pushes up through the diaphragm into the
+ chest area. This can trigger GERD by enabling stomach acid to reflux into the esophagus. It
+ may not cause any symptoms but can worsen GERD. Avoid large meals and stay upright after
+ eating.
+ e. E. Gastroesophageal Reflux Disease (GERD) with Mild Esophagitis is a condition where
+ stomach acid constantly backs up into the esophagus and irritates the lining of the stomach,
+ causing inflammation. It can present with heartburn, chest discomfort, and regurgitation and
+ can be managed by avoiding spicy, fatty, or acidic foods, eating smaller meals, and not lying
+ down immediately after eating.
+ 2. Importance should be placed on medication compliance to help manage symptoms.
+Clinic Note Form
+ 3. Diet modifications are necessary to help manage this condition. To help with GERD,
+ increase fiber intake, drink plenty of water, eat smaller, more frequent meals, and avoid lying
+ down immediately after eating.
+ 4. Regular follow-up appointments to monitor electrolyte levels and check for symptom
+ improvement.
+ 5. Call your primary health provider if you notice symptoms or 911 if symptoms worsen:
+ a. Notice adverse effects from your medicines, like a rash or difficulty breathing.
+ b. Vomit blood or something like coffee grounds.
+ c. Notice stools with blood in them or are black or tar colored.
+ d. Have severe abdominal pain that gets worse or doesn't go away.
+ e. Have abdominal pain when pushed on.
+ f. Feel very weak, lightheaded, or fainty
+ g. Losing weight unintentionally.

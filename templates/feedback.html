@@ -80,6 +80,10 @@
             background-color: #ccc;
             cursor: not-allowed;
         }
+
+        textarea:disabled {
+            background-color: #eee;
+        }
     </style>
 </head>
 <body>
@@ -94,8 +98,20 @@
         <button id="audioPageBtn" onclick="location.href='/audio'">Go to Home Page</button>
 
         <div class="icons">
-            <span class="icon like" id="likeBtn">👍</span>
-            <span class="icon dislike" id="dislikeBtn">👎</span>
+            <div style="text-align: center;">
+                <span class="icon like" id="likeBtn" style="pointer-events: none; opacity: 0.5;">👍</span><br>
+                <small>Like</small>
+            </div>
+            <div style="text-align: center;">
+                <span class="icon dislike" id="dislikeBtn" style="pointer-events: none; opacity: 0.5;">👎</span><br>
+                <small>Dislike</small>
+            </div>
+        </div>
+
+        <div style="margin-top: 25px;">
+            <textarea id="commentBox" placeholder="Leave a comment..." rows="4"
+                      style="width: 100%; border-radius: 8px; padding: 10px; border: 1px solid #ccc; font-size: 16px;" disabled></textarea>
+            <button id="submitCommentBtn" disabled>Submit Comment</button>
         </div>
     </div>
 
@@ -110,11 +126,23 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ conversation_id: 123 }) 
             })
-            .then(response => response.text())
+            .then(response => response.json())  // <-- CHANGED to .json()
             .then(data => {
-                document.getElementById('feedback-container').innerText = data;
+                document.getElementById('feedback-container').innerText = data.reply;
+                var userId = data.user_id;
+                var conversationId = data.conversation_id;
                 button.disabled = false;
                 button.innerText = "Generate Feedback";
+
+                // Enable like/dislike buttons
+                document.getElementById('likeBtn').style.pointerEvents = 'auto';
+                document.getElementById('likeBtn').style.opacity = '1';
+                document.getElementById('dislikeBtn').style.pointerEvents = 'auto';
+                document.getElementById('dislikeBtn').style.opacity = '1';
+
+                // Enable comment box and button
+                document.getElementById('commentBox').disabled = false;
+                document.getElementById('submitCommentBtn').disabled = false;
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -128,7 +156,7 @@
             fetch('/liked', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ liked : 'yes' }) 
+                body: JSON.stringify({ user_id:userId,conversation_id:conversationId,liked: 'yes' }) 
             })
             .then(response => response.text())
             .then(data => {
@@ -143,11 +171,33 @@
             fetch('/liked', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ liked: 'No' }) 
+                body: JSON.stringify({ user_id:userId,conversation_id:conversationId,liked: 'No' }) 
             })
             .then(response => response.text())
             .then(data => {
                 alert('You disliked the feedback.');
+            })
+            .catch(error => {
+                alert('Network Issue');
+            });
+        });
+
+        document.getElementById('submitCommentBtn').addEventListener('click', () => {
+            const comment = document.getElementById('commentBox').value;
+            if (!comment.trim()) {
+                alert('Please enter a comment before submitting.');
+                return;
+            }
+
+            fetch('/comment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id:userId,conversation_id:conversationId,comment: comment})
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Thank you for your feedback!');
+                document.getElementById('commentBox').value = '';
             })
             .catch(error => {
                 alert('Network Issue');

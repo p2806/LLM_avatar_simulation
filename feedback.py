@@ -13,12 +13,12 @@ def analyze(prompt, model):
     )
         print("\n--- RESPONSE FROM MODEL ---\n")
         #print(response['message']['content'])
-
-        if not response['message']['content'].strip():
+        result = response.choices[0].message.content
+        if not result.strip():
             print("Bot omitted a response.")
-        return response['message']['content']
+        return result
     except Exception as e:
-        print(f"Error in Ollama chat: {e}")
+        print(f"Error in OpenAI chat: {e}")
         return "Error during analysis."
 
 
@@ -31,7 +31,7 @@ def extract_text_from_pdf(pdf_path):
 
 # Load the PDFs
 def analyze_context(model):
-    pdf_files = ["trainingdata/Essentials-2021.pdf", "trainingdata/NTFS-NP-Final.pdf","trainingdata/Speakingrate.pdf"]
+    pdf_files = ["trainingdata/ClinicalNote.pdf","trainingdata/Speakingrate.pdf"]
 
     # Extract text from both documents
     documents_text = "\n\n".join([extract_text_from_pdf(pdf) for pdf in pdf_files])
@@ -89,17 +89,13 @@ def final_evaluation(debrief_transcript,speechmetrics, model):
 
     ---
 
-    **Structure Your Response as Follows:**  
+    Evaluate the student based on:
+        1. Which key points they **covered** completely.
+        2. Which key points they **missed** or partially covered.
+        3. Give a score out of 10.
+        4. Provide specific feedback to the student.
 
-    **Strengths:**  
-    - Identify and explain what the Nursing student did well.  
-    - Directly reference specific techniques from the best practices list.  
-    - Include **key phrases or paraphrased sections from the transcript** as evidence.  
-
-    **Areas for Improvement:**  
-    - Identify what the Nursing Student missed or could have done better.  
-    - Clearly connect feedback to specific **best practices they failed to use**.  
-    - Provide **direct transcript quotes or paraphrased examples** to justify critiques.
+        Output your answer in a clear, structured format.
     """
 
     evaluation = analyze(final_prompt, model)

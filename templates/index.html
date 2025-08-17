@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon-32x32.png" type="image/png">
-    <title>Proactive - AI Conversational Tool</title>
+    <title>ProActIve - AI Conversational Tool</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,13 +28,14 @@
             color: #fff;
             text-decoration: none;
             margin: 0 15px;
+            font-size: 1.1em;
         }
         .hero {
             background: #007bff;
             color: #fff;
             text-align: center;
-            padding: 80px 20px; /* Reduce padding to move it up */
-            margin-bottom: -30px; /* Pull up the section below */
+            padding: 80px 20px;
+            margin-bottom: -30px;
         }
         .hero h1 {
             font-size: 3em;
@@ -58,7 +59,7 @@
         }
         .video-section {
             text-align: center;
-            margin: 20px auto; /* Reduce margin to move it upwards */
+            margin: 20px auto;
             padding: 20px;
             width: 100%;
         }
@@ -98,15 +99,31 @@
             text-decoration: none;
             margin: 0 10px;
         }
+
+        /* Highlighting styles for "ProActIve" */
+        .highlight-a {
+            color: #ff6f3c; /* yellow */
+            font-weight: bold;
+        }
+        .highlight-i {
+            color: #ff6f3c; /* cyan */
+            font-weight: bold;
+        }
+        .highlight-rest {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="nav-links">
-            <a href="#">Proactive</a>
+            <a href="#">
+                <span class="highlight-rest">Pro</span><span class="highlight-a">A</span><span class="highlight-rest">ct</span><span class="highlight-i">I</span><span class="highlight-rest">ve</span>
+            </a>
             <a href="#features">Features</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
+            <a href="{{ url_for('patients') }}">Patients</a>
         </div>
         <div class="auth-links">
             <a href="{{ url_for('login') }}">Login</a>
@@ -115,14 +132,14 @@
     </header>
     
     <div class="hero">
-        <h1>Welcome to PROaCTIVE</h1>
+        <h1>Welcome to <span class="highlight-rest">Pro</span><span class="highlight-a">A</span><span class="highlight-rest">ct</span><span class="highlight-i">I</span><span class="highlight-rest">ve</span></h1>
         <p>Experience the future of AI conversations.</p>
         <a href="{{ url_for('audio') }}" class="cta-button">Let's Practice</a>
     </div>
 
     <!-- Video Section -->
     <div class="video-section">
-        <h2>Watch PROaCTIVE in Action</h2>
+        <h2>Watch ProActIve in Action</h2>
         <div class="video-container">
             <video controls>
                 <source src="{{ url_for('static', filename='result_voice.mp4') }}" type="video/mp4">
@@ -149,13 +166,13 @@
 
     <div id="about" class="about">
         <h2>About Us</h2>
-        <p>Proactive is designed to revolutionize how you interact with AI, providing a seamless and intuitive conversational experience.</p>
+        <p>ProActIve is designed to revolutionize how you interact with AI, providing a seamless and intuitive conversational experience.</p>
     </div>
 
     <div id="testimonials" class="testimonials">
         <h2>What Our Users Say</h2>
         <div class="testimonial">
-            <p>"Proactive has changed the way I interact with technology. The AI is incredibly intuitive and helpful!"</p>
+            <p>"ProActIve has changed the way I interact with technology. The AI is incredibly intuitive and helpful!"</p>
             <cite>- Alex Smith</cite>
         </div>
         <div class="testimonial">
@@ -165,7 +182,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Proactive. All rights reserved.</p>
+        <p>&copy; 2024 ProActIve. All rights reserved.</p>
         <a href="#contact">Contact</a>
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
